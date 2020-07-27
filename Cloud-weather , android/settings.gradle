@@ -1,0 +1,2 @@
+rootProject.name='HellpoFirebase'
+include ':app'

@@ -1,0 +1,340 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!--img 스타일 추가-->
+    <style>
+    img { width: 50px; height: auto; }
+
+  /* Global */
+body {
+    background: #66f789;
+    padding: 40px;
+}
+
+img { max-width:100%; }
+
+a {
+	-webkit-transition: all 150ms ease;
+	-moz-transition: all 150ms ease;
+	-ms-transition: all 150ms ease;
+	-o-transition: all 150ms ease;
+	transition: all 150ms ease;
+	}
+    a:hover {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE 8 */
+        filter: alpha(opacity=50); /* IE7 */
+        opacity: 0.6;
+        text-decoration: none;
+    }
+
+
+/* Container */
+.container-fluid {
+    background: #FFFFFF;
+    margin: 40px auto 10px;
+    padding: 20px 40px 0;
+    max-width: 960px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Page Header */
+.page-header {
+    background: #f9f9f9;
+    margin: -30px -40px 40px;
+    padding: 20px 40px;
+    border-top: 4px solid #ccc;
+    color: #999;
+    text-transform: uppercase;
+    }
+    .page-header h3 {
+        line-height: 0.88rem;
+        color: #000;
+        }
+
+
+
+/* Thumbnail Box */
+.caption h4 {
+    font-size: 1rem;
+    color: #444;
+    }
+    .caption p {
+        font-size: 0.75rem;
+        color: #999;
+        }
+        .btn.btn-mini {
+            font-size: 0.63rem;
+            }
+
+
+/* Carousel Control */
+.control-box {
+    text-align: right;
+    width: 100%;
+    }
+    .carousel-control{
+        background: #666;
+        border: 0px;
+        border-radius: 0px;
+        display: inline-block;
+        font-size: 34px;
+        font-weight: 200;
+        line-height: 18px;
+        opacity: 0.5;
+        padding: 4px 10px 0px;
+        position: static;
+        height: 30px;
+        width: 15px;
+        }
+
+
+/* Footer */
+.footer {
+    margin: auto;
+    width: 100%;
+    max-width: 960px;
+    display: block;
+    font-size: 0.69rem;
+    }
+    .footer, .footer a {
+        color: #c9e4f7;
+        }
+        p.right  {
+            float: right;
+            }
+
+
+/* Mobile Only */
+@media (max-width: 767px) {
+    .page-header, .control-box {
+    text-align: center;
+    }
+}
+@media (max-width: 479px) {
+    .caption {
+    word-break: break-all;
+    }
+}
+.navbar-nav {
+
+}
+
+/* ADD-ON
+-------------------------------------------------- */
+body:after{content:"less than 320px";font-size:1rem;font-weight:bold;position:fixed;bottom:0;width:100%;text-align:center;background-color:hsla(1,60%,40%,0.7);color:#fff;height:20px;padding-top:0;margin-left:0;left:0}@media only screen and (min-width:320px){body:after{content:"320 to 480px";background-color:hsla(90,60%,40%,0.7);height:20px;padding-top:0;margin-left:0}}@media only screen and (min-width:480px){body:after{content:"480 to 768px";background-color:hsla(180,60%,40%,0.7);height:20px;padding-top:0;margin-left:0}}@media only screen and (min-width:768px){body:after{content:"768 to 980px";background-color:hsla(270,60%,40%,0.7);height:20px;padding-top:0;margin-left:0}}@media only screen and (min-width:980px){body:after{content:"980 to 1024px";background-color:hsla(300,60%,40%,0.7);height:20px;padding-top:0;margin-left:0}}@media only screen and (min-width:1024px){body:after{content:"1024 and up";background-color:hsla(360,60%,40%,0.7);height:20px;padding-top:0;margin-left:0}}
+
+::selection { background: #ff5e99; color: #FFFFFF; text-shadow: 0; }
+::-moz-selection { background: #ff5e99; color: #FFFFFF; }
+
+a, a:focus, a:active, a:hover, object, embed { outline: none; }
+:-moz-any-link:focus { outline: none; }
+input::-moz-focus-inner { border: 0; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+<div class="row-fluid">
+<div class="span12">
+    <div class="page-header">
+        <h3>Weather Monitor using Firebase, NodeMCU</h3>
+        <h4 id="clock"></h4><!--현재시간-->
+    </div>
+
+    <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+            <div class="item active d-flex">
+                    <ul class="thumbnails navbar-nav  d-flex">
+                            <div class="thumbnail nav-item  d-flex">
+                                <img src="C:/APM_Setup/htdocs/test/온도3.jpg" alt="" width="100" height="100">
+                            </div>
+                            <div class="caption nav-item">
+                                <h4 id="temp"> </h4>
+
+                            </div>
+
+
+
+                            <div class="thumbnail nav-item">
+                                <img src="C:/APM_Setup/htdocs/test/습도3.png" alt="" width="100" height="100">
+                            </div>
+                            <div class="caption nav-item">
+                                <h4 id="humi"> </h4>
+
+                            </div>
+
+
+     <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+                    </ul>
+              </div><!-- /Slide1 -->
+
+        </div>
+
+    </div><!-- /#myCarousel -->
+
+</div><!-- /.span12 -->
+</div><!-- /.row -->
+</div><!-- /.container -->
+
+
+
+
+<strong></p>
+</div>
+
+<!--Firebase JS SDK -->
+   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+   <!-- canvasJS 라이브러리(canavasjs.min.js)경로 -->
+   <script src="canvasjs.min.js"></script>
+
+   <script>
+     // Your web app's Firebase configuration
+     var firebaseConfig = {
+       apiKey: "AIzaSyD6XxCJM0bQTzh3yBRjWvDjliQr9JEqetE",
+       authDomain: "my-project-bba83-2d951.firebaseapp.com",
+       databaseURL: "https://my-project-bba83-2d951.firebaseio.com",
+       projectId: "my-project-bba83-2d951",
+       storageBucket: "my-project-bba83-2d951.appspot.com",
+       messagingSenderId: "705324546654",
+       appId: "1:705324546654:web:f4a7691ca30dd8677592cf",
+       measurementId: "G-SGHEGG9NZ6"
+     };
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+     firebase.analytics();
+
+   var objRef = firebase.database().ref().child('logDHT/');
+   objRef.on("child_added", function(snapshot){
+   var newHumi = snapshot.val().humidity;
+   var newTemp = snapshot.val().temperature;
+   humi.innerText = "Humidity : " + newHumi + "%";
+   temp.innerText = "Temperature : " + newTemp + "℃";
+   });
+
+
+       // CnavasJS.Chart 객체 생성 및 실행
+       var chart = new CanvasJS.Chart("chartContainer", {
+           animationEnabled: true,
+           title: {
+               text: "201613716 1반 김형민",
+               fontFamily: "Helvetica",
+               fontWeight: "bold",
+               fontColor: '#03254E',
+               fontSize: 22,
+           },
+           legend: {
+               fontSize: 15,
+               // verticalAlign: "top",  // legend를 top으로 이동함, 기본은 차트 bottom에 위치함
+           },
+           axisX: {//가로 아래 좌표
+               title: "Time",
+               suffix: "s",
+               titleFontSize: 14,
+               titleFontColor: '#03254E',
+               valueFormatString: 'HH:mm:ss',//시:분:초
+               labelFontColor: '#000000',
+           },
+           axisY: {//세로 왼쪽 좌표
+               title: "Temperature",
+               suffix: "°C",
+               valueFormatString: "0.0#",
+               minimum: 0,
+               maximum: 50,
+               titleFontColor: '#000000',
+               titleFontSize: 14,
+               labelFontColor: '#000000',
+           },
+           axisY2: {//세로 오른쪽 좌표
+               title: "Humidity",
+               suffix: "%",
+               valueFormatString: "0.0#",
+               minimum: 0,
+               maximum: 90,
+               titleFontColor: '#000000',
+               titleFontSize: 14,
+               labelFontColor: '#000000',
+           },
+           toolTip: {
+               shared: true,
+
+               // Custom toolTip 사용
+               contentFormatter: function(e) {
+                 //데이터 삽입
+                   var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
+                   content += "Humidity: " + e.entries[0].dataPoint.y + " &deg;C<br>";
+                   content += "Temperature: " + e.entries[1].dataPoint.y + " %";
+                   return content;
+               }
+           },
+           animationEnabled: true,
+           data: [{
+               type: "line", //change it to line, spline, area, column, pie,
+               name: "Humidity",
+               axisYType: "secondary",
+               showInLegend: true,
+               legendText: "Humidity",
+               markType: "circle",
+               markerSize: 1,
+               markerColor: "blue",
+               lineColor: "blue",
+               dataPoints: []   // Humidity 데이터 출력 값을 저장하는 배열
+           }, {
+             type: "line", //change it to line, spline, area, column, pie,
+             name: "Temperature",
+             axisY2Type: "secondary",
+             showInLegend: true,
+             legendText: "Temperature",
+             markType: "circle",
+             markerSize: 1,
+             markerColor: "red",
+             lineColor: "red",
+               dataPoints: []  // Temperature 데이터 출력 값을 저장하는 배열
+           }]
+       });
+
+       // DB에서 logDHT/ 값 얻어오기
+       var dbRef = firebase.database().ref('logDHT/');
+
+       dbRef.on('child_added', function(snapshot) {
+           var row = snapshot.val();
+           var newHumi = snapshot.val().humidity;//읽어온 습도값을 저장
+           var newTemp = snapshot.val().temperature;//읽어온 온도값을 저장
+         humi.innerText = "Humidity : " + newHumi + "%";//정해진 텍스트값에 습도값을 넣는다
+         temp.innerText = "Temperature : " + newTemp + "℃";//정해진 텍스트값에 온도값을 넣는다
+
+           // firebase DB로 부터 받은 날짜 문자열은 CanvasJS에서 사용하려면 반드시 Date 객체형으로 변환해야 함
+           row.time = new Date(row.time);
+           chart.options.data[0].dataPoints.push({   // data[0]는 Huminity 속성 배열
+               x: row.time,
+               y: row.humidity
+           });
+           chart.options.data[1].dataPoints.push({   // data[1]는 Temperature 속성 배열
+             x: row.time,
+             y: row.temperature
+           });
+           chart.render();  // 데이터 포인터 값을 챠트에 넣은 후 차트 출력
+       });
+
+       function printTime() {//현재시간을 넣어줄 함수
+           var clock = document.getElementById("clock");        // 출력할 장소 선택
+           var now = new Date();                                // 현재시간을 가져오는 함수
+           var nowTime = now.getFullYear() + "년 " + (now.getMonth()+1) + "월 " + now.getDate()
+           + "일 " + now.getHours() + "시 " + now.getMinutes() + "분 " + now.getSeconds() + "초 ";
+           //년 월 일 시 분 초 가져오기
+           clock.innerHTML = nowTime;           //가져온 년 월 일 시 분 초 를 clock함수에 넣어주기
+           setTimeout("printTime()",1000);         // setTimeout(“실행할함수”,시간) 시간은1초의 경우 1000
+      }window.onload = function() {                         // 페이지가 로딩되면 실행
+           printTime();
+      }
+   </script>
+
+</body>
+</html>

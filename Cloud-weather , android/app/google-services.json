@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "955154957534",
+    "firebase_url": "https://hellpofirebase.firebaseio.com",
+    "project_id": "hellpofirebase",
+    "storage_bucket": "hellpofirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955154957534:android:c7aeb5d0d0bcc8543cae4f",
+        "android_client_info": {
+          "package_name": "com.example.hellpofirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955154957534-2cknv4j4nemk4s1fq0ddclvjer94c87n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hellpofirebase",
+            "certificate_hash": "06f4b4685a4dbb8fa31798c4389e8209d03826e2"
+          }
+        },
+        {
+          "client_id": "955154957534-e3i81s3ccckudt2uvkmrgevet3m3e5cv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD00ERZlP4DgggFnZbzm4bq792ZjieMYSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955154957534-e3i81s3ccckudt2uvkmrgevet3m3e5cv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
